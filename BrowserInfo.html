@@ -13,7 +13,7 @@
     var geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     geocoder.geocode({'latLng': latlng}, function(results, status) {
-     console.log(results[0].formatted_address);
+     console.log("Your Location - "results[0].formatted_address);
     });
   }
  
