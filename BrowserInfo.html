@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Location, OS and Browser Name</title>
+<script type="text/javascript"
+	src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+ function getLocation(){
+  navigator.geolocation.watchPosition(showPosition);
+ }
+ 
+ function showPosition(position) {
+    var geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+     console.log(results[0].formatted_address);
+    });
+  }
+ 
+ 
+ function getOS(){
+	var OSName="unknown OS";
+	if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
+	if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
+	if (navigator.appVersion.indexOf("X11")!=-1) OSName="UNIX";
+	if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";
+	console.log('Your OS: '+OSName);
+ }
+
+
+function getBrowser(){
+	var browsername = "";
+	if(navigator.userAgent.indexOf("Opera")!=-1){
+	 browsername = "Opera";
+	}else if(navigator.userAgent.indexOf("MSIE")!=-1 || navigator.userAgent.indexOf("Trident/")!=-1){
+	 browsername = "IE";
+	}else if(navigator.userAgent.indexOf("Chrome")!=-1){
+	 browsername = "Chrome";
+	}else if(navigator.userAgent.indexOf("Firefox")!=-1){
+	 browsername = "Firefox";
+	}else if(navigator.userAgent.indexOf("Safari")!=-1){
+	 browsername = "Safari";
+	}
+	console.log('Your Browser: '+browsername);
+}  
+</script>
+</head>
+<body>
+	<button onclick="getLocation();">Get Location</button>
+	<button onclick="getBrowser();">Get Browser Name</button>
+	<button onclick="getOS();">Get OS</button>
+</body>
+</html>
