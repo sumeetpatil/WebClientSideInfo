@@ -9,7 +9,7 @@
  function getLocation(){
   navigator.geolocation.watchPosition(showPosition);
  }
- 
+ //Show Position
  function showPosition(position) {
     var geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
